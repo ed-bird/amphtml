@@ -1,1 +1,9 @@
-package.json
+.babel-cache/**
+.github/ISSUE_TEMPLATE/**
+**/package*.json
+**/node_modules/**
+**/build/**
+**/dist/**
+**/dist.3p/**
+**/dist.tools/**
+extensions/**/dist/**

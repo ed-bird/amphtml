@@ -1,89 +1,97 @@
 {
   "extends": ["config:base"],
   "node": {
-    "supportPolicy": ["lts_active"]
+    "supportPolicy": ["lts_latest"]
   },
-  "statusCheckVerify": true,
+  "ignoreDeps": ["ubuntu-2004"],
+
   "commitMessagePrefix": "📦",
-  "dependencies": {
-    "enabled": false
-  },
-  "ignorePaths": [],
   "timezone": "America/Los_Angeles",
-  "schedule": "12am every weekday",
-  "reviewers": "team:build-cop",
+  "schedule": "after 12am every weekday",
+
+  "dependencyDashboard": true,
+  "prBodyColumns": ["Package", "Update", "Type", "Change", "Package file"],
+  "separateMinorPatch": true,
+  "prBodyNotes": [
+    "<details>",
+    "<summary>How to resolve breaking changes</summary>",
+    "This PR may introduce breaking changes that require manual intervention. In such cases, you will need to check out this branch, fix the cause of the breakage, and commit the fix to ensure a green CI build. To check out and update this PR, follow the steps below:",
+    "```sh\n# Check out the PR branch (these steps are from GitHub)\ngit checkout -b renovate-bot-{{{branchName}}} master\ngit pull https://github.com/renovate-bot/amphtml.git {{{branchName}}}\n\n# Directly make fixes and commit them\namp lint --fix # For lint errors in JS files\namp prettify --fix # For prettier errors in non-JS files\n# Edit source code in case of new compiler warnings / errors\n\n# Push the changes to the branch\ngit push git@github.com:renovate-bot/amphtml.git renovate-bot-{{{branchName}}}:{{{branchName}}}\n```",
+    "</details>"
+  ],
+
   "packageRules": [
     {
-      "updateTypes": ["patch"],
-      "groupName": "subpackage dependencies (patch updates)"
+      "groupName": "subpackage devDependencies",
+      "matchPaths": ["**/*"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "subpackage-"
+      }
     },
     {
-      "updateTypes": ["minor"],
-      "groupName": "subpackage dependencies (minor updates)"
-    },
-
-    {
-      "paths": ["src/**"],
-      "updateTypes": ["patch"],
-      "groupName": "runtime dependencies (patch updates)",
-      "reviewers": "team:wg-runtime",
-      "labels": ["WG: runtime"]
+      "groupName": "build system devDependencies",
+      "matchPaths": ["build-system/**"],
+      "labels": ["WG: infra"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "build-system-"
+      }
     },
     {
-      "paths": ["src/**"],
-      "updateTypes": ["minor"],
-      "groupName": "runtime dependencies (minor updates)",
-      "reviewers": "team:wg-runtime",
-      "labels": ["WG: runtime"]
-    },
-
-    {
-      "paths": ["build-system/**"],
-      "updateTypes": ["patch"],
-      "groupName": "build system dependencies (patch updates)",
-      "reviewers": "team:wg-infra",
-      "labels": ["WG: infra"]
+      "groupName": "validator devDependencies",
+      "matchPaths": ["validator/**"],
+      "labels": ["WG: caching"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "validator-"
+      }
     },
     {
-      "paths": ["build-system/**"],
-      "updateTypes": ["minor"],
-      "groupName": "build system dependencies (minor updates)",
-      "reviewers": "team:wg-infra",
-      "labels": ["WG: infra"]
-    },
-
-    {
-      "paths": ["validator/**"],
-      "updateTypes": ["patch"],
-      "groupName": "validator dependencies (patch updates)",
-      "reviewers": "team:wg-caching",
-      "labels": ["WG: caching"]
+      "groupName": "core devDependencies",
+      "matchPaths": ["+(package.json)"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "core-"
+      }
     },
     {
-      "paths": ["validator/**"],
-      "updateTypes": ["minor"],
-      "groupName": "validator dependencies (minor updates)",
-      "reviewers": "team:wg-caching",
-      "labels": ["WG: caching"]
-    },
-
-    {
-      "paths": ["+(package.json)"],
-      "updateTypes": ["patch"],
-      "groupName": "core dependencies (patch updates)"
+      "groupName": "linting devDependencies",
+      "matchPackagePatterns": ["\\b(prettier|eslint)\\b"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "linting-"
+      }
     },
     {
-      "paths": ["+(package.json)"],
-      "updateTypes": ["minor"],
-      "groupName": "core dependencies (minor updates)"
+      "groupName": "babel devDependencies",
+      "matchPackagePatterns": ["\\bbabel"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "babel-"
+      }
     },
-
     {
-      "updateTypes": ["minor", "patch"],
-      "packagePatterns": ["^@ampproject/"],
-      "groupName": "ampproject dependencies (minor & patch updates)",
-      "dependencies": {
-        "enabled": true
+      "excludePackagePatterns": ["^@ampproject/"],
+      "matchDepTypes": ["dependencies"],
+      "enabled": false
+    },
+    {
+      "groupName": "ampproject devDependencies",
+      "matchPackagePatterns": ["^@ampproject/"],
+      "matchDepTypes": ["devDependencies"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "ampproject-"
+      }
+    },
+    {
+      "groupName": "ampproject dependencies",
+      "matchPackagePatterns": ["^@ampproject/"],
+      "matchDepTypes": ["dependencies"],
+      "major": {
+        "groupName": null,
+        "additionalBranchPrefix": "ampproject-"
       }
     }
   ]

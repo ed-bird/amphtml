@@ -24,7 +24,6 @@ import {jsonConfiguration} from '../src/json';
  *   clientIdScope: (string|undefined),
  *   clientIdCookieName: (string|undefined),
  *   consentHandlingOverride: (boolean|undefined),
- *   remoteHTMLDisabled: (boolean|undefined),
  *   fullWidthHeightRatio: (number|undefined),
  * }}
  */
@@ -150,6 +149,11 @@ const adConfig = jsonConfiguration({
     preconnect: ['https://inv-nets.admixer.net', 'https://cdn.admixer.net'],
   },
 
+  'adnuntius': {
+    prefetch: 'https://cdn.adnuntius.com/adn.js',
+    renderStartImplemented: true,
+  },
+
   'adocean': {
     consentHandlingOverride: true,
   },
@@ -168,6 +172,11 @@ const adConfig = jsonConfiguration({
   'adpon': {
     prefetch: 'https://ad.adpon.jp/amp.js',
     clientIdScope: 'AMP_ECID_ADPON',
+  },
+
+  'adpushup': {
+    prefetch: 'https://securepubads.g.doubleclick.net/tag/js/gpt.js',
+    preconnect: 'https://cdn.adpushup.com',
   },
 
   'adreactor': {},
@@ -210,6 +219,11 @@ const adConfig = jsonConfiguration({
     preconnect: ['https://mads.at.atwola.com', 'https://aka-cdn.adtechus.com'],
   },
 
+  'adtelligent': {
+    preconnect: ['https://s.adtelligent.com'],
+    renderStartImplemented: true,
+  },
+
   'adthrive': {
     prefetch: ['https://www.googletagservices.com/tag/js/gpt.js'],
     preconnect: [
@@ -227,8 +241,13 @@ const adConfig = jsonConfiguration({
 
   'aduptech': {
     prefetch: 'https://s.d.adup-tech.com/jsapi',
-    preconnect: ['https://d.adup-tech.com', 'https://m.adup-tech.com'],
+    preconnect: [
+      'https://d.adup-tech.com',
+      'https://m.adup-tech.com',
+      'https://v.adup-tech.com',
+    ],
     renderStartImplemented: true,
+    consentHandlingOverride: true,
   },
 
   'adventive': {
@@ -294,6 +313,16 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'anyclip': {
+    prefetch:
+      'https://player.anyclip.com/anyclip-widget/lre-widget/prod/v1/src/lre.js',
+    preconnect: [
+      'https://trafficmanager.anyclip.com',
+      'https://lreprx-server.anyclip.com',
+    ],
+    renderStartImplemented: true,
+  },
+
   'appnexus': {
     prefetch: 'https://acdn.adnxs.com/ast/ast.js',
     preconnect: 'https://ib.adnxs.com',
@@ -334,6 +363,7 @@ const adConfig = jsonConfiguration({
 
   'broadstreetads': {
     prefetch: 'https://cdn.broadstreetads.com/init-2.min.js',
+    renderStartImplemented: true,
   },
 
   'byplay': {},
@@ -393,6 +423,10 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'digiteka': {
+    renderStartImplemented: true,
+  },
+
   'directadvert': {
     renderStartImplemented: true,
   },
@@ -420,11 +454,6 @@ const adConfig = jsonConfiguration({
       'https://www.eadv.it/track/esr.min.js',
       'https://www.eadv.it/track/ead.min.js',
     ],
-  },
-
-  'eas': {
-    prefetch: 'https://amp.emediate.eu/amp.v0.js',
-    renderStartImplemented: true,
   },
 
   'empower': {
@@ -460,17 +489,39 @@ const adConfig = jsonConfiguration({
 
   'fake': {},
 
+  'fake-delayed': {
+    renderStartImplemented: true,
+  },
+
+  'feedad': {
+    clientIdScope: '__fa_amp',
+    prefetch: 'https://web.feedad.com/sdk/feedad-async.js',
+    renderStartImplemented: true,
+    fullWidthHeightRatio: 16 / 9,
+    consentHandlingOverride: true,
+  },
+
   'felmat': {
     prefetch: 'https://t.felmat.net/js/fmamp.js',
     renderStartImplemented: true,
   },
 
+  'finative': {},
+
+  'firstimpression': {
+    prefetch: 'https://ecdn.firstimpression.io/static/js/fiamp.js',
+    preconnect: 'https://cdn.firstimpression.io',
+    renderStartImplemented: true,
+    consentHandlingOverride: true,
+  },
+
   'flite': {},
 
   'fluct': {
+    prefetch: ['https://pdn.adingo.jp/p.js'],
     preconnect: [
       'https://cdn-fluct.sh.adingo.jp',
-      'https://s.sh.adingo.jp',
+      'https://sh.adingo.jp',
       'https://i.adingo.jp',
     ],
   },
@@ -494,6 +545,10 @@ const adConfig = jsonConfiguration({
 
   'giraff': {
     renderStartImplemented: true,
+  },
+
+  'glomex': {
+    prefetch: 'https://player.glomex.com/integration/1/amp-embed.js',
   },
 
   'gmossp': {
@@ -567,6 +622,10 @@ const adConfig = jsonConfiguration({
     consentHandlingOverride: true,
   },
 
+  'iprom': {
+    prefetch: 'https://cdn.ipromcloud.com/ipromNS.js',
+  },
+
   'ix': {
     prefetch: ['https://js-sec.indexww.com/apl/amp.js'],
     preconnect: 'https://as-sec.casalemedia.com',
@@ -576,6 +635,8 @@ const adConfig = jsonConfiguration({
   'jubna': {},
 
   'kargo': {},
+
+  'ketshwa': {},
 
   'kiosked': {
     renderStartImplemented: true,
@@ -621,6 +682,14 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'luckyads': {
+    renderStartImplemented: true,
+  },
+
+  'macaw': {
+    renderStartImplemented: true,
+  },
+
   'mads': {
     prefetch: 'https://eu2.madsone.com/js/tags.js',
   },
@@ -634,6 +703,24 @@ const adConfig = jsonConfiguration({
     ],
   },
 
+  'marfeel': {
+    prefetch: 'https://securepubads.g.doubleclick.net/tag/js/gpt.js',
+    preconnect: [
+      'https://live.mrf.io',
+      'https://tpc.googlesyndication.com',
+      'https://fastlane.rubiconproject.com',
+      'https://htlb.casalemedia.com',
+      'https://prg.smartadserver.com',
+      'https://ib.adnxs.com',
+      'https://bidder.criteo.com',
+      'https://marfeel-d.openx.net',
+      'https://ice.360yield.com',
+      'https://mbid.marfeelrev.com',
+      'https://adservice.google.com',
+    ],
+    consentHandlingOverride: true,
+  },
+
   'mantis-recommend': {
     prefetch: 'https://assets.mantisadnetwork.com/recommend.min.js',
     preconnect: [
@@ -641,6 +728,8 @@ const adConfig = jsonConfiguration({
       'https://resize.mantisadnetwork.com',
     ],
   },
+
+  'mediaad': {},
 
   'medianet': {
     preconnect: 'https://contextual.media.net',
@@ -711,6 +800,19 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'myfinance': {
+    preconnect: [
+      'https://a.myfidevs.io',
+      'https://static.myfinance.com',
+      'https://www.myfinance.com',
+    ],
+    renderStartImplemented: true,
+  },
+
+  'myoffrz': {
+    renderStartImplemented: true,
+  },
+
   'mytarget': {
     prefetch: 'https://ad.mail.ru/static/ads-async.js',
     renderStartImplemented: true,
@@ -760,7 +862,9 @@ const adConfig = jsonConfiguration({
 
   'nws': {},
 
-  'oblivki': {},
+  'oblivki': {
+    renderStartImplemented: true,
+  },
 
   'onead': {
     prefetch: 'https://ad-specs.guoshipartners.com/static/js/onead-amp.min.js',
@@ -798,6 +902,11 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'playstream': {
+    prefetch: 'https://app.playstream.media/js/amp.js',
+    renderStartImplemented: true,
+  },
+
   'plista': {},
 
   'polymorphicads': {
@@ -814,6 +923,10 @@ const adConfig = jsonConfiguration({
   },
 
   'postquare': {},
+
+  'ppstudio': {
+    renderStartImplemented: true,
+  },
 
   'pressboard': {
     renderStartImplemented: true,
@@ -839,6 +952,11 @@ const adConfig = jsonConfiguration({
 
   'puffnetwork': {
     prefetch: 'https://static.puffnetwork.com/amp_ad.js',
+    renderStartImplemented: true,
+  },
+
+  'pulse': {
+    prefetch: 'https://static.pulse.mail.ru/pulse-widget-amp.js',
     renderStartImplemented: true,
   },
 
@@ -879,6 +997,11 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'recreativ': {
+    prefetch: 'https://go.rcvlink.com/static/amp.js',
+    renderStartImplemented: true,
+  },
+
   'relap': {
     renderStartImplemented: true,
   },
@@ -886,6 +1009,11 @@ const adConfig = jsonConfiguration({
   'relappro': {
     prefetch: 'https://cdn.relappro.com/adservices/amp/relappro.amp.min.js',
     preconnect: 'https://tags.relappro.com',
+    renderStartImplemented: true,
+  },
+
+  'remixd': {
+    preconnect: 'https://tags.remixd.com',
     renderStartImplemented: true,
   },
 
@@ -960,6 +1088,10 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'smartads': {
+    prefetch: 'https://smart-ads.biz/amp.js',
+  },
+
   'smartadserver': {
     prefetch: 'https://ec-ns.sascdn.com/diff/js/amp.v0.js',
     preconnect: 'https://static.sascdn.com',
@@ -998,6 +1130,10 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'sona': {
+    renderStartImplemented: true,
+  },
+
   'sovrn': {
     prefetch: 'https://ap.lijit.com/www/sovrn_amp/sovrn_ads.js',
   },
@@ -1012,7 +1148,6 @@ const adConfig = jsonConfiguration({
   },
 
   'springAds': {
-    prefetch: 'https://www.asadcdn.com/adlib/adlib_seq.js',
     preconnect: ['https://ib.adnxs.com'],
     renderStartImplemented: true,
   },
@@ -1056,9 +1191,10 @@ const adConfig = jsonConfiguration({
   },
 
   'teads': {
-    prefetch: 'https://a.teads.tv/media/format/v3/teads-format.min.js',
+    prefetch: 'https://s8t.teads.tv/media/format/v3/teads-format.min.js',
     preconnect: [
       'https://cdn2.teads.tv',
+      'https://a.teads.tv',
       'https://t.teads.tv',
       'https://r.teads.tv',
     ],
@@ -1118,6 +1254,12 @@ const adConfig = jsonConfiguration({
     renderStartImplemented: true,
   },
 
+  'verizonmedia': {
+    prefetch: 'https://jac.yahoosandbox.com/amp/jac.js',
+    preconnect: ['https://jill.fc.yahoo.com'],
+    renderStartImplemented: true,
+  },
+
   'videointelligence': {
     preconnect: 'https://s.vi-serve.com',
     renderStartImplemented: true,
@@ -1129,6 +1271,10 @@ const adConfig = jsonConfiguration({
 
   'viralize': {
     renderStartImplemented: true,
+  },
+
+  'vlyby': {
+    prefetch: 'https://cdn.vlyby.com/amp/qad/qad-outer2.js',
   },
 
   'vmfive': {
@@ -1176,6 +1322,10 @@ const adConfig = jsonConfiguration({
     preconnect: 'https://us.adserver.yahoo.com',
   },
 
+  'yahoofedads': {
+    renderStartImplemented: true,
+  },
+
   'yahoojp': {
     prefetch: [
       'https://s.yimg.jp/images/listing/tool/yads/ydn/amp/amp.js',
@@ -1189,7 +1339,22 @@ const adConfig = jsonConfiguration({
   },
 
   'yandex': {
-    prefetch: 'https://yastatic.net/partner-code/loaders/context_amp.js',
+    prefetch: 'https://an.yandex.ru/system/context_amp.js',
+    renderStartImplemented: true,
+  },
+
+  'yektanet': {
+    preconnect: [
+      'https://cdn.yektanet.com',
+      'https://cg-sc.yektanet.com',
+      'https://native.yektanet.com',
+      'https://nfetch.yektanet.net',
+      'https://rfetch.yektanet.net',
+      'https://scrapper.yektanet.com',
+      'https://ua.yektanet.com',
+      'https://bfetch.yektanet.com',
+      'https://mostatil.cdn.yektanet.com',
+    ],
     renderStartImplemented: true,
   },
 
